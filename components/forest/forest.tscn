@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://components/terrain/terrain.tscn" type="PackedScene" id=1]
+[ext_resource path="res://components/pine/pine.tscn" type="PackedScene" id=2]
+[ext_resource path="res://components/forest/main_pine.gd" type="Script" id=3]
 
 [node name="root" type="Spatial"]
 
@@ -12,3 +14,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 100 )
 [node name="debug_camera" type="Camera" parent="."]
 transform = Transform( 0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 100, 150, 100 )
 far = 1000.0
+
+[node name="main_pine" parent="." instance=ExtResource( 2 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 100, 0 )
+script = ExtResource( 3 )
