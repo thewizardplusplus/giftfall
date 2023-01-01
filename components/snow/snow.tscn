@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://components/snow/snow.tres" type="Material" id=2]
+
+[sub_resource type="QuadMesh" id=1]
+material = ExtResource( 2 )
+
+[node name="root" type="Spatial"]
+
+[node name="snow" type="CPUParticles" parent="."]
+amount = 50000
+lifetime = 6.0
+preprocess = 6.0
+mesh = SubResource( 1 )
+emission_shape = 2
+emission_box_extents = Vector3( 256, 1, 256 )
