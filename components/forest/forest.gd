@@ -18,7 +18,7 @@ func _ready():
 	for index in range(0, pine_count):
 		var pine := Pine.instance()
 		pine.name = "_generated_pine_%d" % index
-		pine.scale = _main_pine.scale
+		pine.scale = _main_pine.get_pine_scale()
 
 		Utils.vertically_rotate(pine, rand_range(0, 2 * PI))
 
