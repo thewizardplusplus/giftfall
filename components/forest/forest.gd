@@ -20,7 +20,7 @@ func _ready():
 		pine.name = "_generated_pine_%d" % index
 		pine.scale = _main_pine.scale
 
-		pine.transform = pine.transform.rotated(Vector3.UP, deg2rad(rand_range(0, 360)))
+		Utils.vertically_rotate(pine, rand_range(0, 2 * PI))
 
 		while true:
 			var x := Utils.random_in_symmetric_range(half_terrain_resolution)
