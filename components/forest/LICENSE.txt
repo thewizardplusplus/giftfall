@@ -1,0 +1,11 @@
+CC BY 3.0
+
+Copyright (C) 2005 Kevin MacLeod
+
+The `jingle_bells.ogg` file is licensed under the Creative Commons
+Attribution 3.0 Unported License.
+
+You should have received a copy of the license along with this work. If not, see
+<http://creativecommons.org/licenses/by/3.0/>.
+
+<https://commons.wikimedia.org/wiki/File:Jingle_Bells_(90bpm)_(Kevin_MacLeod)_(ISRC_USUAN1100187).oga>

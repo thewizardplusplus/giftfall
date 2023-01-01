@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://components/terrain/terrain.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/main_pine/main_pine.tscn" type="PackedScene" id=2]
 [ext_resource path="res://components/forest/forest.gd" type="Script" id=4]
+[ext_resource path="res://components/forest/jingle_bells.ogg" type="AudioStream" id=5]
 [ext_resource path="res://components/snow/snow.tscn" type="PackedScene" id=6]
 
 [node name="root" type="Spatial"]
@@ -15,3 +16,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0 )
 
 [node name="snow" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0 )
+
+[node name="audio_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = 5.0
+autoplay = true

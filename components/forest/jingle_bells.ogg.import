@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/jingle_bells.ogg-2721d8483f75b975cdeb39e8b2d86822.oggstr"
+
+[deps]
+
+source_file="res://components/forest/jingle_bells.ogg"
+dest_files=[ "res://.import/jingle_bells.ogg-2721d8483f75b975cdeb39e8b2d86822.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
