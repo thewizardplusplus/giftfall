@@ -40,7 +40,7 @@ _global_script_class_icons={
 
 config/name="giftfall"
 run/main_scene="res://components/forest/forest.tscn"
-config/icon="res://icon.png"
+config/icon="res://docs/logo/logo.png"
 
 [editor]
 
