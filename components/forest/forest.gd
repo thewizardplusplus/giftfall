@@ -13,24 +13,32 @@ func _ready():
 
 	_terrain.put_on_terrain(_main_pine)
 
+	for index in range(0, pine_count):
+		var pine := self._generate_random_pine(index)
+		get_parent().call_deferred("add_child", pine)
+
+func _generate_random_pine(index: int) -> Node:
+	var pine := Pine.instance()
+	pine.name = "_generated_pine_%d" % index
+	pine.scale = _main_pine.get_pine_scale()
+
+	Utils.vertically_rotate(pine, rand_range(0, 2 * PI))
+
+	self._set_random_position(pine)
+	_terrain.put_on_terrain(pine)
+
+	return pine
+
+func _set_random_position(pine: Node):
 	var half_terrain_resolution: int = _terrain.get_resolution() / 2
 	var main_pine_horizontal_position := Utils.horizontal_part(_main_pine.transform.origin)
-	for index in range(0, pine_count):
-		var pine := Pine.instance()
-		pine.name = "_generated_pine_%d" % index
-		pine.scale = _main_pine.get_pine_scale()
 
-		Utils.vertically_rotate(pine, rand_range(0, 2 * PI))
+	while true:
+		var pine_x := Utils.random_in_symmetric_range(half_terrain_resolution)
+		var pine_z := Utils.random_in_symmetric_range(half_terrain_resolution)
 
-		while true:
-			var x := Utils.random_in_symmetric_range(half_terrain_resolution)
-			var z := Utils.random_in_symmetric_range(half_terrain_resolution)
-			if Vector2(x, z).distance_to(main_pine_horizontal_position) > main_pine_margin:
-				pine.transform.origin.x = x
-				pine.transform.origin.z = z
+		if Vector2(pine_x, pine_z).distance_to(main_pine_horizontal_position) > main_pine_margin:
+			pine.transform.origin.x = pine_x
+			pine.transform.origin.z = pine_z
 
-				break
-
-		_terrain.put_on_terrain(pine)
-
-		get_parent().call_deferred("add_child", pine)
+			break
