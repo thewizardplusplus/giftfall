@@ -17,6 +17,10 @@ func _ready():
 		var pine := self._generate_random_pine(index)
 		get_parent().call_deferred("add_child", pine)
 
+func _unhandled_input(event: InputEvent):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().notification(MainLoop.NOTIFICATION_WM_QUIT_REQUEST)
+
 func _generate_random_pine(index: int) -> Node:
 	var pine := Pine.instance()
 	pine.name = "_generated_pine_%d" % index
