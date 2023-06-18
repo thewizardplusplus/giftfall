@@ -18,4 +18,6 @@ cat "$project_root/export_presets.cfg" \
     declare full_export_path="$project_root/$export_path"
     declare full_export_directory="$(dirname "$full_export_path")"
     mkdir --parents "$full_export_directory"
+
+    godot --no-window --path "$project_root" --export "$name" "$export_path"
   done
