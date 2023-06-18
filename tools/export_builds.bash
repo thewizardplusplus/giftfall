@@ -29,4 +29,20 @@ cat "$project_root/export_presets.cfg" \
       mkdir --parents "$license_path"
     fi
     cp "$project_root"/LICENSE* "$license_path"
+
+    if [[ "$platform" != "$MAC_OSX_PLATFORM" ]]; then
+      declare export_archive_path="$full_export_path.zip"
+      zip \
+        --recurse-paths \
+        --junk-paths \
+        "$export_archive_path" \
+        "$full_export_directory"
+    else
+      pushd "$full_export_directory" > /dev/null
+
+      declare export_file="$(basename "$full_export_path")"
+      zip --recurse-paths --grow "$export_file" "$MAC_OSX_RESOURCE_PATH"
+
+      popd > /dev/null
+    fi
   done
