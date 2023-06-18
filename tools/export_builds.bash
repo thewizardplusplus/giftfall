@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 declare -r EXPORT_PARAMETER_PATTERN="^(name|platform|export_path)="
+declare -r MAC_OSX_PLATFORM="Mac OSX"
+declare -r MAC_OSX_RESOURCE_PATH="Giftfall.app/Contents/Resources"
 
 declare -r script_path="$(dirname "$0")"
 declare -r project_root="$script_path/.."
@@ -20,4 +22,11 @@ cat "$project_root/export_presets.cfg" \
     mkdir --parents "$full_export_directory"
 
     godot --no-window --path "$project_root" --export "$name" "$export_path"
+
+    declare license_path="$full_export_directory"
+    if [[ "$platform" == "$MAC_OSX_PLATFORM" ]]; then
+      license_path+="/$MAC_OSX_RESOURCE_PATH"
+      mkdir --parents "$license_path"
+    fi
+    cp "$project_root"/LICENSE* "$license_path"
   done
