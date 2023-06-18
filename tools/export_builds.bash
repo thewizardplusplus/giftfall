@@ -14,7 +14,8 @@ cat "$project_root/export_presets.cfg" \
     declare name="$(echo "$REPLY" | cut -f1)"
     declare platform="$(echo "$REPLY" | cut -f2)"
     declare export_path="$(echo "$REPLY" | cut -f3)"
-    echo "name: \"$name\""
-    echo "platform: \"$platform\""
-    echo "export path: \"$export_path\""
+
+    declare full_export_path="$project_root/$export_path"
+    declare full_export_directory="$(dirname "$full_export_path")"
+    mkdir --parents "$full_export_directory"
   done
